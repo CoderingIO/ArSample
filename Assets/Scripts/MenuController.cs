@@ -5,11 +5,12 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class MenuController : MonoBehaviour {
-	public Animator panel;
+	public GameObject panel;
+	private Animator animator;
 
 	// Use this for initialization
 	void Start () {
-		
+		animator = panel.GetComponent<Animator> ();
 	}
 	
 	// Update is called once per frame
@@ -26,10 +27,10 @@ public class MenuController : MonoBehaviour {
 	}
 
 	public void RaisePanel(){
-		panel.SetBool("panelUp", true);
+		animator.SetTrigger ("playPanelSlide");
 	}
 
 	public void LowerPanel(){
-		panel.SetBool("panelUp", false);
+		animator.SetTrigger ("resetPanelSlide");
 	}
 }
